@@ -1,0 +1,210 @@
+/* ========================================
+   APP SHELL — Navbar & Layout
+   ======================================== */
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.navbar__logo {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.navbar__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.3px;
+}
+
+.navbar__subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-400);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.navbar__status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--success-600);
+    background: var(--success-50);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--success-100);
+}
+
+.navbar__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success-500);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ---------- Navbar Actions (right side) ---------- */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle {
+    position: relative;
+    width: 56px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--gray-200);
+    background: var(--gray-100);
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--transition-base);
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.theme-toggle__track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+    font-size: 13px;
+}
+
+.theme-toggle__icon {
+    line-height: 1;
+    z-index: 1;
+    transition: opacity var(--transition-base);
+}
+
+.theme-toggle__icon--sun {
+    opacity: 1;
+}
+
+.theme-toggle__icon--moon {
+    opacity: 0.4;
+}
+
+[data-theme="dark"] .theme-toggle__icon--sun {
+    opacity: 0.4;
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+    opacity: 1;
+}
+
+.theme-toggle__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition-spring);
+}
+
+[data-theme="dark"] .theme-toggle__thumb {
+    transform: translateX(26px);
+    background: var(--primary-500);
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+/* ---------- Main Content ---------- */
+.main-content {
+    flex: 1;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* ---------- Smooth Theme Transition ---------- */
+.navbar,
+.panel,
+.stat-card,
+.account-card,
+.tx-history__item {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .navbar__inner {
+        padding: 0 16px;
+        height: 56px;
+    }
+
+    .navbar__title {
+        font-size: 15px;
+    }
+
+    .navbar__subtitle {
+        display: none;
+    }
+
+    .navbar__status {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px 16px;
+    }
+}
